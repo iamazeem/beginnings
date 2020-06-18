@@ -12,8 +12,21 @@ I was learning C from a small book and exploring the documentation of Borland C+
 
 Yes, I love Matrix! <3
 
+Code: [`MATRIX.CPP`](code/matrix/MATRIX.CPP)
+
 <img src="code/matrix/matrix.gif" width=auto height=auto></img>
 
 ## Text-based User Interface (TUI) for a Terminal / Shell Emulator
 
+Code: [`DOS.CPP`](code/dos/DOS.CPP)
+
 <img src="code/dos/dos.gif" width=auto height=auto></img>
+
+# Contact
+
+Email: azeem.sajid@gmail.com
+LinkedIn: https://www.linkedin.com/in/az33msajid/
+
+# License
+
+[Apache 2.0](LICENSE)
