@@ -24,8 +24,8 @@ Code: [`DOS.CPP`](code/dos/DOS.CPP)
 
 # Contact
 
-Email: azeem.sajid@gmail.com
-LinkedIn: https://www.linkedin.com/in/az33msajid/
+Email: azeem.sajid@gmail.com  
+LinkedIn: https://www.linkedin.com/in/az33msajid
 
 # License
 
