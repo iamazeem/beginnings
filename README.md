@@ -32,7 +32,7 @@ Code: [`math-ops`](code/math-ops/)
 
 # Contact
 
-Email: azeem.sajid@gmail.com
+Email: azeem.sajid@gmail.com  
 LinkedIn: https://www.linkedin.com/in/az33msajid
 
 # License
