@@ -87,12 +87,12 @@ int main()
                 cmd.clrscr();
             }
 
-			cmdStr[0] = '\0';
+            cmdStr[0] = '\0';
             col = 0;
             break;
 
         case ESC:
-			cmd.clrscr();
+            cmd.clrscr();
             cmdStr[0] = '\0';
             col = 0;
             break;
@@ -100,7 +100,7 @@ int main()
         default:
             if (col < STR_LEN && isprint(key))
             {
-				cmd << key;
+                cmd << key;
                 cmdStr[col] = key;
                 ++col;
             }
@@ -123,7 +123,7 @@ void showInterface()
 
     gotoxy(32, 2); printArrows(17);
     gotoxy(26, 8); printArrows(29);
-    
+
     cMsg.window(32, 1, 48, 1);
     _setcursortype(_NOCURSOR);
     textbackground(RED);
@@ -133,45 +133,45 @@ void showInterface()
 
     cs1.window(1, 4, 25, 6);
     textbackground(BLACK); clrscr();
-    
+
     cs1.window(55, 4, 80, 6);
     textbackground(BLACK);
     clrscr();
-    
+
     cBox.window(2, 3, 79, 5);
     textbackground(LIGHTGREEN);
     clrscr();
-    
+
     cmdBox.window(4, 4, 13, 4);
     textbackground(BLUE);
     textcolor(WHITE + BLINK);
     clrscr();
-    cprintf(" >>");    
-    
+    cprintf(" >>");
+
     cmd.window(14, 4, 77, 4);
     textbackground(BLUE);
     textcolor(WHITE);
     clrscr();
-    
+
     rMsg.window(26, 7, 54, 7);
     textbackground(RED);
     textcolor(BLUE);
     clrscr();
     cprintf("        Result Screen");
-    
+
     rs.window(1, 11, 80, 25);
     textbackground(BLACK);
     clrscr();
-    
+
     rScr.window(3, 9, 78, 24);
     textbackground(LIGHTGREEN);
     clrscr();
-    
+
     status.window(5, 10, 76, 10);
     textbackground(BLACK);
     textcolor(LIGHTGRAY);
     clrscr();
-    
+
     dateBox.window(3, 8, 20, 8);
     textbackground(WHITE);
     textcolor(DARKGRAY);
@@ -182,7 +182,7 @@ void showInterface()
     textbackground(WHITE);
     textcolor(DARKGRAY);
     clrscr();
-    
+
     result.window(5, 12, 76, 23);
     textbackground(BLUE);
     highvideo();
@@ -205,7 +205,7 @@ void showCommands()
 char getKey()
 {
     printCWD();
-    
+
     while (!kbhit())
     {
         printTime();
@@ -237,14 +237,14 @@ void printTime()
     if (t.ti_hour > 12)
     {
         t.ti_hour -= 12;
-    } 
+    }
 
     timeBox.clrscr();
     _setcursortype(_NOCURSOR);
 
     char m = (t.ti_hour >= 12 ? 'P' : 'A');
     printf(" Time: %2d:%02d:%02d %cM", t.ti_hour, t.ti_min, t.ti_sec, m);
-    
+
     _setcursortype(_NOCURSOR);
 }
 
@@ -270,32 +270,32 @@ void printCWD()
 
 void printDirectoryListing()
 {
-	unsigned long nfiles = 0;
-	unsigned long ndir = 0;
-	unsigned long totalsize = 0;
-	int row = 1;
+    unsigned long nfiles = 0;
+    unsigned long ndir = 0;
+    unsigned long totalsize = 0;
+    int row = 1;
 
-	result.clrscr();
+    result.clrscr();
 
-	struct find_t ff = {0};
-	int done = _dos_findfirst("*.*", FA_DIREC, &ff);
+    struct find_t ff = {0};
+    int done = _dos_findfirst("*.*", FA_DIREC, &ff);
     while (!done)
     {
-		if (ff.attrib & _A_SUBDIR)
+        if (ff.attrib & _A_SUBDIR)
         {
-			result << ff.name;
+            result << ff.name;
             gotoxy(9, row);
-			result << "      <DIR>       " << ff.name << '\n';
+            result << "      <DIR>       " << ff.name << '\n';
             ++ndir;
             ++row;
         }
         else
         {
             struct fcb f = {0};
-			parsfnm(ff.name, &f, 1);
+            parsfnm(ff.name, &f, 1);
             result << f.fcb_name;
             gotoxy(9, row);
-			result << "   " << f.fcb_ext << setw(12) << ff.size << "  " << ff.name << '\n';
+            result << "   " << f.fcb_ext << setw(12) << ff.size << "  " << ff.name << '\n';
             ++nfiles;
             ++row;
         }
@@ -315,9 +315,9 @@ void printDirectoryListing()
             result.clrscr();
         }
 
-		totalsize += ff.size;
-        
-		done = _dos_findnext(&ff);
+        totalsize += ff.size;
+
+        done = _dos_findnext(&ff);
     }
 
     result << '\n' << setw(9) << nfiles << " file(s)" << setw(18) << totalsize << " bytes\n";
