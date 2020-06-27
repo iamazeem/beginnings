@@ -35,7 +35,7 @@ public:
 
 private:
     const MenuItem* items;              // list of menu items
-    int             nItems;             // number of menu items
+    size_t          nItems;             // number of menu items
     char            choice;             // selected menu item
 
     void setDirection(const int direction);
